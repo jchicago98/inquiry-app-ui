@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/bootstrap.min.css",
+              "src/all.min.css",
+              "src/templatemo-style.css"
             ],
             "scripts": []
           },
