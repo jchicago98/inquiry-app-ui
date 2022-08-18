@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -7,18 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
 
   ngOnInit(): void {
   }
 
-  goToHomepage(){
+  goToHomepage() {
     this.router.navigate(['/homepage']);
   }
-
-  goToLogin(){
+  goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  onSubmit() {
+    console.warn(this.profileForm.value);
   }
 
 }
