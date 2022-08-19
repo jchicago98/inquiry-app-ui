@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goToLogin(){
+  goToLogin() {
     this.router.navigate(['/login']);
   }
 
-  goToHomepage(){
+  goToHomepage() {
     this.router.navigate(['/homepage']);
   }
 
