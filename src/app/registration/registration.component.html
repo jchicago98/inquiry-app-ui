@@ -7,7 +7,7 @@
         <div class="card">
           <h2 class="card-title text-center">Registration Page</h2>
           <div class="card-body py-md-4">
-            <form _lpchecked="1" (ngSubmit)= "saveAccount()" [formGroup]= "registrationForm">
+            <form _lpchecked="1" (ngSubmit)= "saveAccount()" [formGroup]= "registrationForm" data-test-id="userForm">
               <div class="form-group">
                 <input type="text" class="form-control" id="firstName" placeholder="First Name" data-test-id="firstName"
                   formControlName="firstName">

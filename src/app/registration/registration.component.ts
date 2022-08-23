@@ -32,32 +32,12 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  prepareSave(): createAccount {
-    return new createAccount(
-      null,
-      this.firstName,
-      this.lastName,
-      this.yearBorn,
-      this.email,
-      this.password,
-      this.reEnteredPassword
-    )
-  }
-
   saveAccount(): void {
     if (this.registrationForm.valid && this.password == this.reEnteredPassword) {
-      let account = this.prepareSave();
       this.router.navigate(['/homepage']);
     }
   }
 
-
-  goToHomepage() {
-    this.router.navigate(['/homepage']);
-  }
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -8,7 +9,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ NavbarComponent ],
+      imports: [AppRoutingModule]
     })
     .compileComponents();
 
@@ -20,4 +22,13 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('homepage and login buttons should not navigate to their respective pages', ()=>{
+    let homepageFunction = fixture.componentInstance.goToHomepage();
+    expect (homepageFunction).toBeFalsy();
+
+    let loginFunction = fixture.componentInstance.goToLogin();
+    expect (loginFunction).toBeFalsy();
+  });
+
 });
