@@ -1,20 +1,29 @@
 <app-navbar></app-navbar>
-  <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="img/hero.jpg">
-    <form class="d-flex tm-search-form">
-        <ul>
-            <ul><input class="form-control tm-search-input" type="text" placeholder="Username" autofocus></ul>
-            <ul><input class="form-control tm-search-input" type="password" placeholder="Password"></ul>
-            <ul>
-                <button (click)="goToRegistration();" type="button" class="btn btn-primary">Register</button>
-                <button type="button" class="btn btn-primary">Sign In</button>
-            </ul>
-        </ul>
-    </form>
-  </div>
-  
-  <div class="container-fluid tm-container-content tm-mt-60">
-    <div class="row tm-mb-90">            
-        
-    </div> <!-- row -->
-  </div> <!-- container-fluid, tm-container-content -->
-  <app-footer></app-footer>
+<div id="authenticator">
+  <mat-card id="authenticator-content">
+    <mat-card-header>
+      <mat-card-title>{{getStateText()}}</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="isLoginState();">
+      <input placeholder="Email">
+      <input placeholder="Password">
+      <button mat-flat-button color="warn">Login</button>
+    </div>
+    <div *ngIf="isForgotPasswordState();">
+      <input placeholder="Email">
+      <button mat-flat-button color="warn">Reset</button>
+    </div>
+    <mat-card-actions align="end">
+      <button mat-flat-button (click)="onLoginClick();">Login</button>
+      <button mat-flat-button (click)="onForgotPasswordClick();">Forgot Password</button>
+      <button mat-flat-button (click)="goToRegistration();">Create an Account</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="container-fluid tm-container-content tm-mt-60">
+  <div class="row tm-mb-90">
+
+  </div> <!-- row -->
+</div> <!-- container-fluid, tm-container-content -->
+<app-footer></app-footer>
