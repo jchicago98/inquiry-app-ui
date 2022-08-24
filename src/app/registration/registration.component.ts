@@ -33,9 +33,7 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   saveAccount(): void {
-    if (this.registrationForm.valid && this.password == this.reEnteredPassword) {
       this.router.navigate(['/homepage']);
-    }
   }
 
 
