@@ -3,7 +3,7 @@ export class createAccount {
         public id: string | null,
         public firstName: string,
         public lastName: string,
-        public yearStarted: number,
+        public yearBorn: number,
         public email: string,
         public password: string,
         public reEnteredPassword : string

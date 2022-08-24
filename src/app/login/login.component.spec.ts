@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppRoutingModule } from '../app-routing.module';
+import { of } from 'rxjs';
 
 import { LoginComponent } from './login.component';
 
@@ -8,7 +10,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      imports: [AppRoutingModule]
     })
     .compileComponents();
 
@@ -19,5 +22,10 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('registration link should navigate to registration page using /registrationpage', ()=>{
+    let registrationFunction = fixture.componentInstance.goToRegistration();
+    expect (registrationFunction).toBeFalsy();
   });
 });
