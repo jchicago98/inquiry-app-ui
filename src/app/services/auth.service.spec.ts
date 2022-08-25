@@ -15,18 +15,24 @@ describe('AuthService', () => {
   });
 
   it('should have auth behavior subject that publishes false initially',()=>{
-    service.isAuthenticated.subscribe; {
+    service.isAuthenticated().subscribe(
       res => expect(res).toBeFalse()
-    }
+    )
   });
 
   it('should have a sign in method that broadcasts true from isAuthenticated', ()=>{
     service.signIn();
-    service.isAuthenticated.subscribe;{
+    service.isAuthenticated().subscribe(
       res => expect(res).toBeTrue()
-    }
+    )
+  });
 
+  it('should have a signOut method that broadcasts false',()=>{
+    service.signIn();
     service.signOut();
+    service.isAuthenticated().subscribe(
+      res => expect(res).toBeFalse()
+    );
   });
 
 });

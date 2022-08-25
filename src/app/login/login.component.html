@@ -5,13 +5,24 @@
       <mat-card-title>{{getStateText()}}</mat-card-title>
     </mat-card-header>
     <div *ngIf="isLoginState();">
-      <input placeholder="Email">
-      <input placeholder="Password">
-      <button mat-flat-button color="warn">Login</button>
+      <form (ngSubmit)="signIn()" [formGroup]="loginForm">
+        <input matInput placeholder="Enter your email" class="form-control" formControlName="username" name="username"
+          id="username" required>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control"
+          formControlName="password" name="password" id="password" required>
+        <button [disabled]="!this.loginForm.valid" class="btn btn-primary">Login</button>
+        <div *ngIf="loginError" class="text text-danger">
+          {{loginErrorMessage}}
+        </div>
+        <div *ngIf="!this.loginForm.valid && this.loginForm.touched" class="text-danger">
+          All fields are required to be filled out.
+        </div>
+      </form>
     </div>
     <div *ngIf="isForgotPasswordState();">
-      <input placeholder="Email">
-      <button mat-flat-button color="warn">Reset</button>
+      <input matInput placeholder="Enter your email" class="form-control" formControlName="forgetPassword" name="forgotPassword"
+      id="forgotPassword" required>
+      <button class="btn btn-primary">Reset</button>
     </div>
     <mat-card-actions align="end">
       <button mat-flat-button (click)="onLoginClick();">Login</button>

@@ -6,15 +6,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   private authSubject = new BehaviorSubject<boolean>(false);
-  public isAuthenticated: Observable<boolean> = this.authSubject.asObservable();
 
   constructor() { }
 
-  signIn() {
+  signIn() : void {
     this.authSubject.next(true);
   }
 
-  signOut() {
+  signOut() : void {
     this.authSubject.next(false);
+  }
+
+  isAuthenticated():Observable<boolean> {
+    return this.authSubject.asObservable();
   }
 }

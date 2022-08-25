@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,28 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   state = LoginCompState.LOGIN;
+  loading: boolean = false;
+  loginError: boolean = false;
+  loginErrorMessage: string = "You messed up LOL!";
+  loginForm: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  }); 
+  hide:boolean=true;
 
-  constructor(private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder) {}
 
   ngOnInit(): void {
   }
+
+  signIn(): void {
+    this.authService.signIn();
+    this.router.navigate(['']);
+  }
+
 
   goToRegistration() {
     this.router.navigate(['/registration']);
