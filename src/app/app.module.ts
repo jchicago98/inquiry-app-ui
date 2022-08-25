@@ -2,11 +2,7 @@ import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +12,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
+import { MaterialModule } from './material-modules/material.module';
 
 
 @NgModule({
@@ -31,11 +28,7 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSliderModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatButtonModule,
+    MaterialModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path:'', pathMatch: 'full', redirectTo:'homepage'},
