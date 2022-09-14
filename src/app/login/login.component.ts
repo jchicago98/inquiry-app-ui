@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService, IUser } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,31 +11,46 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   state = LoginCompState.LOGIN;
-  loading: boolean = false;
+  user: IUser;
+  loading: boolean;
   loginError: boolean = false;
-  loginErrorMessage: string = "You messed up LOL!";
+  loginErrorMessage: string = "";
   loginForm: FormGroup = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
   }); 
   hide:boolean=true;
 
+  get username():string{return this.loginForm.get('username')?.value}
+  get password():string{return this.loginForm.get('password')?.value}
+
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) {}
+    private fb: FormBuilder) {
+      this.loading = false;
+      this.user = {} as IUser;
+  }
+
+  signIn(): void {
+    this.loading = true;
+    this.user.email = this.username;
+    this.user.password = this.password;
+
+    this.authService.signIn(this.user).then(
+      () => this.router.navigate([''])
+    ).catch( error => {
+      this.loading = false;
+      this.loginError = true;
+      this.loginErrorMessage = error.toString();
+    });
+  }
 
   ngOnInit(): void {
   }
 
-  signIn(): void {
-    this.authService.signIn();
-    this.router.navigate(['']);
-  }
-
-
-  goToRegistration() {
-    this.router.navigate(['/registration']);
+  goToSignUp() {
+    this.router.navigate(['/sign-up']);
   }
 
   onForgotPasswordClick() {

@@ -27,8 +27,6 @@ describe('NavbarComponent', () => {
     let homepageFunction = fixture.componentInstance.goToHomepage();
     expect (homepageFunction).toBeFalsy();
 
-    let loginFunction = fixture.componentInstance.goToLogin();
-    expect (loginFunction).toBeFalsy();
   });
 
 });

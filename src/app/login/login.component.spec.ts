@@ -3,6 +3,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { of } from 'rxjs';
 
 import { LoginComponent } from './login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -11,7 +12,11 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [AppRoutingModule]
+      imports: [
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+      ]
     })
     .compileComponents();
 
@@ -24,8 +29,8 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('registration link should navigate to registration page using /registrationpage', ()=>{
-    let registrationFunction = fixture.componentInstance.goToRegistration();
+  it('registration link should navigate to registration page using /signUpPage', ()=>{
+    let registrationFunction = fixture.componentInstance.goToSignUp();
     expect (registrationFunction).toBeFalsy();
   });
 });

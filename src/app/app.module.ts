@@ -1,7 +1,8 @@
 import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { MaterialModule } from './material-modules/material.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -23,13 +25,16 @@ import { MaterialModule } from './material-modules/material.module';
     RegistrationComponent,
     NavbarComponent,
     FooterComponent,
-    SearchpageComponent
+    SearchpageComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path:'', pathMatch: 'full', redirectTo:'homepage'},
       {path:'homepage', component: HomepageComponent}
