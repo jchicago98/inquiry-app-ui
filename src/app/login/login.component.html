@@ -1,30 +1,40 @@
 <app-navbar></app-navbar>
-<div class="login">
-  <form (ngSubmit)="signIn()" [formGroup]="loginForm" class="center-center">
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>email</mat-label>
-        <input matInput placeholder="me@myEmail.com" class="form-control" formControlName="username" name="username"
+<div id="authenticator">
+  <mat-card id="authenticator-content">
+    <mat-card-header>
+      <mat-card-title>{{getStateText()}}</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="isLoginState();">
+      <form (ngSubmit)="signIn()" [formGroup]="loginForm">
+        <input matInput placeholder="Enter your email" class="form-control" formControlName="username" name="username"
           id="username" required>
-        <mat-icon matSuffix>person</mat-icon>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
         <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control"
           formControlName="password" name="password" id="password" required>
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </mat-form-field>
+        <button [disabled]="!this.loginForm.valid" class="btn btn-primary">Login</button>
+        <div *ngIf="loginError" class="text text-danger">
+          {{loginErrorMessage}}
+        </div>
+        <div *ngIf="!this.loginForm.valid && this.loginForm.touched" class="text-danger">
+          All fields are required to be filled out.
+        </div>
+      </form>
     </div>
-    <p>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-    </p>
-    <div *ngIf="loginError" class="text text-danger">
-      {{loginErrorMessage}}
+    <div *ngIf="isForgotPasswordState();">
+      <input matInput placeholder="Enter your email" class="form-control" formControlName="forgetPassword" name="forgotPassword"
+      id="forgotPassword" required>
+      <button class="btn btn-primary">Reset</button>
     </div>
-  </form>
+    <mat-card-actions align="end">
+      <button mat-flat-button (click)="onLoginClick();">Login</button>
+      <button mat-flat-button (click)="onForgotPasswordClick();">Forgot Password</button>
+      <button mat-flat-button (click)="goToSignUp();">Create an Account</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
-<div>
-  Don't have an account? <a routerLink="/sign-up">Sign Up</a>
-</div>
+
+<div class="container-fluid tm-container-content tm-mt-60">
+  <div class="row tm-mb-90">
+
+  </div> <!-- row -->
+</div> <!-- container-fluid, tm-container-content -->
 <app-footer></app-footer>
