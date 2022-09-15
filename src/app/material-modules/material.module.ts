@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {A11yModule} from '@angular/cdk/a11y';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { A11yModule } from '@angular/cdk/a11y';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -14,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule
   ],
-  exports: [    
+  exports: [
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
@@ -35,7 +36,8 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatButtonModule,
     MatSliderModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }
