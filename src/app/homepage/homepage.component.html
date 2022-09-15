@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="img/hero.jpg">
-    <form class="d-flex tm-search-form">
-        <input class="form-control tm-search-input" type="search" placeholder="Search" aria-label="Search">
-        <button type="button" class="btn btn-primary" routerLink = "/searchpage">
+    <form class="d-flex tm-search-form" [formGroup]= "homepageForm">
+        <input class="form-control tm-search-input" formControlName="searchBar" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+        <button type="button" class="btn btn-primary" (click) = "goToSearchPage()">
             Search
         </button>
     </form>
