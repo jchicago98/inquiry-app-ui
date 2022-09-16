@@ -21,6 +21,11 @@ import { CultureComponent } from './culture/culture.component';
 import { CareerComponent } from './career/career.component';
 import { PersonalLifeComponent } from './personal-life/personal-life.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { AccountComponent } from './account/account.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { SecurityComponent } from './security/security.component';
+import { NotificationComponent } from './notification/notification.component';
+import { BillingComponent } from './billing/billing.component';
 
 
 @NgModule({
@@ -38,7 +43,12 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     CultureComponent,
     CareerComponent,
     PersonalLifeComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    AccountComponent,
+    AccountSettingsComponent,
+    SecurityComponent,
+    NotificationComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
