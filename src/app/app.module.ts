@@ -26,6 +26,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SecurityComponent } from './security/security.component';
 import { NotificationComponent } from './notification/notification.component';
 import { BillingComponent } from './billing/billing.component';
+import { PostsComponent } from './posts/posts.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { BillingComponent } from './billing/billing.component';
     AccountSettingsComponent,
     SecurityComponent,
     NotificationComponent,
-    BillingComponent
+    BillingComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
