@@ -28,6 +28,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/account']);
   }
 
+  goToPost(){
+    this.router.navigate(['/post']);
+  }
+
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe(
       res => this.isAuthenticated = res

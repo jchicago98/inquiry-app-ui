@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { NewsComponent } from './news/news.component';
 import { NotificationComponent } from './notification/notification.component';
 import { PersonalLifeComponent } from './personal-life/personal-life.component';
+import { PostsComponent } from './posts/posts.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SecurityComponent } from './security/security.component';
@@ -33,7 +34,8 @@ export const routes: Routes = [
   {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'security', component:SecurityComponent},
   {path: 'notification', component:NotificationComponent},
-  {path: 'billing', component:BillingComponent}
+  {path: 'billing', component:BillingComponent},
+  {path: 'post', component: PostsComponent}
 ];
 
 @NgModule({

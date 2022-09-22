@@ -27,6 +27,7 @@ import { SecurityComponent } from './security/security.component';
 import { NotificationComponent } from './notification/notification.component';
 import { BillingComponent } from './billing/billing.component';
 import { PostsComponent } from './posts/posts.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { PostsComponent } from './posts/posts.component';
     SecurityComponent,
     NotificationComponent,
     BillingComponent,
-    PostsComponent
+    PostsComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
