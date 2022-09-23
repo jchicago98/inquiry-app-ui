@@ -9,6 +9,7 @@ import { CultureComponent } from './culture/culture.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { MessagesComponent } from './messages/messages.component';
 import { NewsComponent } from './news/news.component';
 import { NotificationComponent } from './notification/notification.component';
 import { PersonalLifeComponent } from './personal-life/personal-life.component';
@@ -35,7 +36,8 @@ export const routes: Routes = [
   {path: 'security', component:SecurityComponent},
   {path: 'notification', component:NotificationComponent},
   {path: 'billing', component:BillingComponent},
-  {path: 'post', component: PostsComponent}
+  {path: 'post', component: PostsComponent},
+  {path: 'messages', component: MessagesComponent}
 ];
 
 @NgModule({

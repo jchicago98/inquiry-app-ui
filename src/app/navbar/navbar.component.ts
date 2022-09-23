@@ -24,6 +24,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/homepage']);
   }
 
+  goToMessages() {
+    this.router.navigate(['/messages']);
+  }
+
   goToAccount(){
     this.router.navigate(['/account']);
   }

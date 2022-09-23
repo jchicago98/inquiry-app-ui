@@ -41,7 +41,7 @@
               <div class="d-flex flex-row align-items-center justify-content-between">
                 <input type="checkbox" required> &nbsp; I accept the terms and conditions
                 <button data-test-id="submit" [disabled]= "!this.registrationForm.valid || this.reEnteredPassword != this.password" type="submit"
-                  class="btn btn-primary" (click)="signUp()">Create Account</button>
+                  class="btn btn-primary" (click)= "signUp(); saveUser();">Create Account</button>
               </div>
             </form>
           </div>

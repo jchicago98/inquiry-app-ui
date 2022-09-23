@@ -1,11 +1,10 @@
 export class createAccount {
     constructor(
-        public id: string | null,
+        public id: number | null,
         public firstName: string,
         public lastName: string,
-        public yearBorn: number,
+        public yearBorn: Date,
         public email: string,
-        public password: string,
-        public reEnteredPassword : string
+        public password: string
     ) { }
 }

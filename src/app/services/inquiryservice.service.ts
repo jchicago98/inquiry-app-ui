@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PostClass } from '../models/post-class.model';
+import { createAccount } from '../models/create.account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InquiryserviceService {
-  private developers?: PostClass[];
+  private users?: createAccount[];
   private baseURL: string = environment.baseURL;
 
   postHeaders = {
@@ -19,42 +19,42 @@ export class InquiryserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllDevelopers(): Observable<PostClass[]> {
-    return this.httpClient.get<PostClass[]>(this.baseURL + "/all").pipe(
+  getAllUsers(): Observable<createAccount[]> {
+    return this.httpClient.get<createAccount[]>(this.baseURL + "/all").pipe(
       map(res => {
-        this.developers = res;
-        return this.developers;
+        this.users = res;
+        return this.users;
       }),
       catchError(this.handleError)
     );
   }
 
-  postDeveloper(dev: PostClass): Observable<PostClass> {
-    return this.httpClient.post<PostClass>(this.baseURL + "/save",
-      dev, this.postHeaders
+  postUser(user: createAccount): Observable<createAccount> {
+    return this.httpClient.post<createAccount>(this.baseURL + "/save",
+      user, this.postHeaders
     ).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
 
-  putDeveloper(dev: PostClass): Observable<PostClass> {
-    return this.httpClient.put<PostClass>(this.baseURL + "/update",
-      dev, this.postHeaders
+  putUser(user: createAccount): Observable<createAccount> {
+    return this.httpClient.put<createAccount>(this.baseURL + "/update",
+      user, this.postHeaders
     ).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
 
-  getDeveloperById(id: number): Observable<PostClass | undefined> {
-    if (!this.developers) {
-      return this.getAllDevelopers().pipe(
-        map(() => this.developers?.find(dev => dev.id == id)),
+  getUserById(id: number): Observable<createAccount | undefined> {
+    if (!this.users) {
+      return this.getAllUsers().pipe(
+        map(() => this.users?.find(users => users.id == id)),
         catchError(this.handleError)
       );
     } else {
-      return of(this.developers.find(dev => dev.id == id));
+      return of(this.users.find(users => users.id == id));
     }
   }
 

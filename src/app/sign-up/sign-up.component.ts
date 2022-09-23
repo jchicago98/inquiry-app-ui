@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { createAccount } from '../models/create.account';
+import { InquiryserviceService } from '../services/inquiryservice.service';
 
 import { IUser, AuthService } from '../services/auth.service';
 
@@ -26,7 +28,7 @@ export class SignUpComponent {
 
   get firstName(): string { return String(this.registrationForm.get('firstName')?.value) }
   get lastName(): string { return String(this.registrationForm.get('lastName')?.value) }
-  get yearBorn(): number { return parseInt(String(this.registrationForm.get('yearBorn')?.value)) }
+  get yearBorn(): Date { return this.registrationForm.get('yearBorn')?.getRawValue() }
   get email(): string { return String(this.registrationForm.get('email')?.value) }
   get password(): string { return String(this.registrationForm.get('password')?.value) }
   get reEnteredPassword(): string { return String(this.registrationForm.get('reEnteredPassword')?.value) }
@@ -34,11 +36,30 @@ export class SignUpComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private inquiryService : InquiryserviceService
   ) {
     this.loading = false;
     this.isConfirm = false;
     this.user = {} as IUser;
+  }
+
+  prepareSave(): createAccount {
+    return new createAccount(
+      null,
+      this.firstName,
+      this.lastName,
+      this.yearBorn,
+      this.email,
+      this.password
+    )
+  }
+
+    saveUser():void{
+    if(this.registrationForm.valid){
+      let user = this.prepareSave();
+      this.inquiryService.postUser(user).subscribe()
+    }
   }
 
   public signUp(): void {

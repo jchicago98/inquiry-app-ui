@@ -18,12 +18,15 @@
                     <a class="nav-link nav-link-2" id="login" routerLink="/login">Login</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item nav-margin-sides">
+                    <a class="nav-link nav-link-2" data-test-id="message" (click)="goToMessages()">Messages</a>
+                </li>
+                <li *ngIf="isAuthenticated" class="nav-item nav-margin-sides">
                     <a class="nav-link nav-link-3" data-test-id="account" (click)="goToAccount()">Account</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item nav-margin-sides">
                     <a class="nav-link nav-link-2" data-test-id="logOut" (click)="signOut()">Logout</a>
-                </li>
 
+                </li>
             </ul>
         </div>
     </div>

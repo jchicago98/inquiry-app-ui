@@ -28,6 +28,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { BillingComponent } from './billing/billing.component';
 import { PostsComponent } from './posts/posts.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     NotificationComponent,
     BillingComponent,
     PostsComponent,
-    SidenavComponent
+    SidenavComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

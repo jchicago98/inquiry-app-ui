@@ -1,4 +1,6 @@
 export class PostClass {
+
+    //THIS ISN'T PERMANENT, JUST A PLACEHOLDER. PLEASE UPDATE AND EDIT LATER, PLEASE!!!
     id: number;
     firstName: string;
     lastName: string;
