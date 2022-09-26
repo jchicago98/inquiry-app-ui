@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { createAccount } from '../models/create.account';
+import { InquiryUser } from '../models/inquiry-user.account';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InquiryserviceService {
-  private users?: createAccount[];
+export class InquiryService {
+  private users?: InquiryUser[];
   private baseURL: string = environment.baseURL;
 
   postHeaders = {
@@ -19,8 +19,8 @@ export class InquiryserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllUsers(): Observable<createAccount[]> {
-    return this.httpClient.get<createAccount[]>(this.baseURL + "/all").pipe(
+  getAllUsers(): Observable<InquiryUser[]> {
+    return this.httpClient.get<InquiryUser[]>(this.baseURL + "/all").pipe(
       map(res => {
         this.users = res;
         return this.users;
@@ -29,8 +29,8 @@ export class InquiryserviceService {
     );
   }
 
-  postUser(user: createAccount): Observable<createAccount> {
-    return this.httpClient.post<createAccount>(this.baseURL + "/save",
+  postUser(user: InquiryUser): Observable<InquiryUser> {
+    return this.httpClient.post<InquiryUser>(this.baseURL + "/save",
       user, this.postHeaders
     ).pipe(
       map(res => res),
@@ -38,8 +38,8 @@ export class InquiryserviceService {
     );
   }
 
-  putUser(user: createAccount): Observable<createAccount> {
-    return this.httpClient.put<createAccount>(this.baseURL + "/update",
+  putUser(user: InquiryUser): Observable<InquiryUser> {
+    return this.httpClient.put<InquiryUser>(this.baseURL + "/update",
       user, this.postHeaders
     ).pipe(
       map(res => res),
@@ -47,7 +47,7 @@ export class InquiryserviceService {
     );
   }
 
-  getUserById(id: number): Observable<createAccount | undefined> {
+  getUserById(id: number): Observable<InquiryUser | undefined> {
     if (!this.users) {
       return this.getAllUsers().pipe(
         map(() => this.users?.find(users => users.id == id)),

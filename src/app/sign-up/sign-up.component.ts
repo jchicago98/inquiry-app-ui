@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { createAccount } from '../models/create.account';
-import { InquiryserviceService } from '../services/inquiryservice.service';
+import { InquiryUser } from '../models/inquiry-user.account';
+import { InquiryService } from '../services/inquiry.service';
 
 import { IUser, AuthService } from '../services/auth.service';
 
@@ -37,21 +37,20 @@ export class SignUpComponent {
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private inquiryService : InquiryserviceService
+    private inquiryService : InquiryService
   ) {
     this.loading = false;
     this.isConfirm = false;
     this.user = {} as IUser;
   }
 
-  prepareSave(): createAccount {
-    return new createAccount(
+  prepareSave(): InquiryUser {
+    return new InquiryUser(
       null,
       this.firstName,
       this.lastName,
       this.yearBorn,
-      this.email,
-      this.password
+      this.email
     )
   }
 

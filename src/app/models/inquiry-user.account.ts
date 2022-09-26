@@ -1,10 +1,9 @@
-export class createAccount {
+export class InquiryUser {
     constructor(
         public id: number | null,
         public firstName: string,
         public lastName: string,
         public yearBorn: Date,
-        public email: string,
-        public password: string
+        public email: string
     ) { }
 }
