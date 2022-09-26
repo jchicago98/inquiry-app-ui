@@ -1,14 +1,13 @@
 export class Messages {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-
-    constructor( id : number, firstName: string, lastName: string, email: string){
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
+    constructor(
+        public message_id: number | null,
+        public user_id: number | null,
+        public fromLastName: string,
+        public fromFirstName: string,
+        public toLastName: string,
+        public toFirstName: string,
+        public messageText: string,
+        public sentDateTime: Date
+    ) { }
 
 }
