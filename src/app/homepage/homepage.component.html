@@ -2,9 +2,9 @@
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll"
     data-image-src="img/hero.jpg">
     <form class="d-flex tm-search-form" [formGroup]="homepageForm">
-        <input class="form-control tm-search-input" formControlName="searchBar" id="searchBar" type="search"
+        <input data-test-id="searchBarTextField" class="form-control tm-search-input" formControlName="searchBar" id="searchBar" type="search"
             placeholder="Search any topics here!" aria-label="Search">
-        <button type="button" class="btn btn-primary" (click)="goToSearchPage()">
+        <button data-test-id="searchButton" type="button" class="btn btn-primary" (click)="goToSearchPage()">
             Search
         </button>
     </form>

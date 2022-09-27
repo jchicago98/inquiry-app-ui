@@ -4,19 +4,25 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { MessageService } from './message.service';
 
+describe('MessageService', () => {
+  let service: MessageService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(MessageService);
 describe('MessageserviceService', () => {
   let service: MessageService;
 
   beforeEach(() => {
-<<<<<<< HEAD:src/app/services/message.service.spec.ts
+
     TestBed.configureTestingModule({});
     service = TestBed.inject(MessageService);
-=======
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(MessageserviceService);
->>>>>>> main:src/app/services/messageservice.service.spec.ts
   });
 
   it('should be created', () => {

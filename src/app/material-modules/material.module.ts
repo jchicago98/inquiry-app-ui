@@ -16,6 +16,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatSliderModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }
