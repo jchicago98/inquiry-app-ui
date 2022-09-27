@@ -35,8 +35,7 @@ export class MessagesComponent implements OnInit {
     this.messageReceiver = this.inquiryUsers?.find(user=>user.email == receiverEmail);
     this.messageService.getMessageThread(this.messageSender?.id).subscribe(
        res => {
-        this.messageThread = res.filter(message=>message.receiver?.id == this.messageReceiver?.id || message.sender?.id == this.messageReceiver?.id);
-        console.log(this.messageThread)
+        this.messageThread = res;
        }
     );
   }
