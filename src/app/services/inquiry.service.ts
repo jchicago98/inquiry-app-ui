@@ -9,7 +9,7 @@ import { InquiryUser } from '../models/inquiry-user.account';
 })
 export class InquiryService {
   private users?: InquiryUser[];
-  private baseURL: string = environment.baseURL;
+  private baseURL: string = environment.baseURL+"/inquiry-users";
 
   postHeaders = {
     headers: new HttpHeaders({

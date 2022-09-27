@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Messages } from '../models/messages.model';
+import { Message } from '../models/message.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MessageserviceService {
-
-  private message?: Messages[];
-  private baseURL: string = environment.baseURL;
+export class MessageService {
+  
+  private message?: Message[];
+  private baseURL: string = environment.baseURL+"/messages";
   
   postHeaders = {
     headers: new HttpHeaders({
@@ -19,18 +19,26 @@ export class MessageserviceService {
   };
   
   constructor(private httpClient: HttpClient) { }
-
-  putUser(message: Messages): Observable<Messages> {
-    return this.httpClient.put<Messages>(this.baseURL + "/update",
-      message, this.postHeaders
-    ).pipe(
+  
+  getMessageThread(id: number | null | undefined): Observable<Message[]>{
+    return this.httpClient.get<Message[]>(this.baseURL+`/${id}`).pipe(
       map(res => res),
       catchError(this.handleError)
     );
   }
+  
 
-  postMessage(message: Messages): Observable<Messages> {
-    return this.httpClient.post<Messages>(this.baseURL + "/save",
+  putUser(message: Message): Observable<Message> {
+    return this.httpClient.put<Message>(this.baseURL + "/update",
+    message, this.postHeaders
+    ).pipe(
+      map(res => res),
+      catchError(this.handleError)
+      );
+    }
+    
+  postMessage(message: Message): Observable<Message> {
+    return this.httpClient.post<Message>(this.baseURL + "/save",
       message, this.postHeaders
     ).pipe(
       map(res => res),
