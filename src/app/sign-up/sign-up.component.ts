@@ -37,7 +37,7 @@ export class SignUpComponent {
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private inquiryService : InquiryService
+    private inquiryService: InquiryService
   ) {
     this.loading = false;
     this.isConfirm = false;
@@ -54,8 +54,8 @@ export class SignUpComponent {
     )
   }
 
-    saveUser():void{
-    if(this.registrationForm.valid){
+  saveUser(): void {
+    if (this.registrationForm.valid) {
       let user = this.prepareSave();
       this.inquiryService.postUser(user).subscribe()
     }
@@ -64,22 +64,22 @@ export class SignUpComponent {
   public signUp(): void {
     this.loading = true;
     this.authService.signUp(this.user)
-    .then(() => {
-      this.loading = false;
-      this.isConfirm = true;
-    }).catch(() => {
-      this.loading = false;
-    });
+      .then(() => {
+        this.loading = false;
+        this.isConfirm = true;
+      }).catch(() => {
+        this.loading = false;
+      });
   }
 
   public confirmSignUp(): void {
     this.loading = true;
     this.authService.confirmSignUp(this.user)
-    .then(() => {
-      this.router.navigate(['/login']);
-    }).catch(() => {
-      this.loading = false;
-    });
+      .then(() => {
+        this.router.navigate(['/login']);
+      }).catch(() => {
+        this.loading = false;
+      });
   }
 
 }

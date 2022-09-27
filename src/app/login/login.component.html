@@ -7,10 +7,10 @@
     <div *ngIf="isLoginState();">
       <form (ngSubmit)="signIn()" [formGroup]="loginForm">
         <input matInput placeholder="Enter your email" class="form-control" formControlName="username" name="username"
-          id="username" required>
+          id="username" data-test-id="usernameTest" required>
         <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control"
-          formControlName="password" name="password" id="password" required>
-        <button [disabled]="!this.loginForm.valid" class="btn btn-primary">Login</button>
+          formControlName="password" name="password" id="password" data-test-id="passwordTest" required>
+        <button [disabled]="!this.loginForm.valid" class="btn btn-primary" data-test-id="loginButton">Login</button>
         <div *ngIf="loginError" class="text text-danger">
           {{loginErrorMessage}}
         </div>

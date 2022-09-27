@@ -1,16 +1,45 @@
 <app-navbar></app-navbar>
-<section>
+<section *ngIf="!postButtonStatus">
     <div class="container-fluid d-flex flex-column">
         <div class="row align-items-center justify-content-center min-vh-100">
             <div class="col-md-9 col-lg-6 my-5">
                 <div class="text-center error-page">
-                    <h1 class="mb-0 text-secondary">"I shall endeavour still further to prosecute this inquiry, an inquiry I trust not merely speculative, but of sufficient moment to inspire the pleasing hope of its becoming essentially beneficial to mankind." - Edward Jenner</h1>
+                    <h1 class="mb-0 text-secondary">"I shall endeavour still further to prosecute this inquiry, an
+                        inquiry I trust not merely speculative, but of sufficient moment to inspire the pleasing hope of
+                        its becoming essentially beneficial to mankind." - Edward Jenner</h1>
                     <h2>Have ideas you want to share?</h2>
                     <div>
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" (click)="postButtonClicked()">
                             Create a post
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section *ngIf="postButtonStatus">
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6 col-xs-12" class="center">
+                <div class="well well-sm well-social-post">
+                    <form [formGroup]= "topics">
+                        <ul class="list-inline" id='list_PostActions'>
+                            <li><img src="../../assets/inquiry_logo.png"></li>
+                        </ul>
+                        <textarea formControlName="postText" class="form-control" placeholder="What would you like to share?"></textarea>
+                        <ul class='list-inline post-actions'>
+                            <h3>Please select the choices that best suit the post you are creating:</h3>
+                            <li class="pull-left" >
+                                <mat-checkbox formControlName="academics">Academics</mat-checkbox><br>
+                                <mat-checkbox formControlName="news">News</mat-checkbox><br>
+                                <mat-checkbox formControlName="career">Career</mat-checkbox>
+                            </li>
+                            <li class="pull-right">
+                                <button class="btn btn-primary">Post</button>
+                            </li>
+                        </ul>
+                    </form>
                 </div>
             </div>
         </div>
