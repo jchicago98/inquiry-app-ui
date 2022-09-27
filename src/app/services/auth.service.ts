@@ -82,6 +82,10 @@ export class AuthService implements CanActivate{
     return Auth.currentUserInfo();
   }
 
+  public getUserEmail(): Promise<string>{
+    return this.getUser().then(user => user.attributes.email);
+  }
+
   public getUserRoles = async () => {
     try{
       const userInfo = await Auth.currentAuthenticatedUser({ bypassCache: true});
