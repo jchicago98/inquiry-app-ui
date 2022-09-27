@@ -12,6 +12,17 @@ describe('MessageService', () => {
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(MessageService);
+describe('MessageserviceService', () => {
+  let service: MessageService;
+
+  beforeEach(() => {
+
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(MessageService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(MessageserviceService);
   });
 
   it('should be created', () => {
