@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { PostClass } from '../models/post-class.model';
 import { PostService } from '../services/post.service';
+import { InquiryUser } from '../models/inquiry-user.account';
 
 @Component({
   selector: 'app-posts',
@@ -11,6 +12,7 @@ import { PostService } from '../services/post.service';
 export class PostsComponent implements OnInit {
 
   postButtonStatus : boolean = false;
+  messageSender?: InquiryUser;
 
   topics = this.formBuilder.group({
     academics: false,
@@ -39,7 +41,7 @@ export class PostsComponent implements OnInit {
   prepareSave(): PostClass {
     return new PostClass(
       null,
-      null,
+      this.messageSender,
       this.academics,
       this.news,
       this.career,
@@ -50,7 +52,7 @@ export class PostsComponent implements OnInit {
   savePost(): void {
     if (this.topics.valid) {
       let post = this.prepareSave();
-      //this.postService.postUser(post).subscribe()
+      this.postService.postMessage(post).subscribe();
     }
   }
 
