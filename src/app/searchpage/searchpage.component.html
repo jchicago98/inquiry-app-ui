@@ -6,7 +6,7 @@
       <div class="mb-4">
         <div class="small mb-3">Search</div>
         <div class="input-group">
-          <input placeholder="Search any topics here!" type="text" class="form-control">
+          <input placeholder="Search any topics here!" type="text" class="form-control" [(ngModel)]="searchText" (ngModelChange)="search()">
           <div class="input-group-append">
             <button class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
@@ -21,7 +21,7 @@
         <div class="table-responsive-xl">
           <table class="mb-0 table table-hover">
             <tbody>
-              <tr *ngFor="let individualPost of postCreated">
+              <tr *ngFor="let individualPost of filteredPosts">
                 <td class="align-middle">
                   <h1>{{individualPost.subjectLine}}</h1>
                   <p>{{individualPost.postText}}</p>

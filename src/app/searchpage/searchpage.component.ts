@@ -12,6 +12,8 @@ import { PostService } from '../services/post.service';
 export class SearchpageComponent implements OnInit {
 
   postCreated ?: PostClass[];
+  filteredPosts?: PostClass[];
+  searchText: string = "";
 
   constructor(
     private router: Router,
@@ -26,6 +28,12 @@ export class SearchpageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPosts();
+  }
+
+  search(){
+    this.filteredPosts = this.postCreated?.filter(post =>
+      post.subjectLine.includes(this.searchText) || post.postText.includes(this.searchText)
+    );
   }
 
 }
