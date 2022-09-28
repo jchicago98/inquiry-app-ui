@@ -23,20 +23,29 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6 col-xs-12" class="center">
                 <div class="well well-sm well-social-post">
-                    <form [formGroup]= "topics">
+                    <form [formGroup]="topics">
                         <ul class="list-inline" id='list_PostActions'>
                             <li><img src="../../assets/inquiry_logo.png"></li>
+                            <input type="text" class="form-control" formControlName="subjectLine" placeholder="Subject of topic">
                         </ul>
-                        <textarea formControlName="postText" class="form-control" placeholder="What would you like to share?"></textarea>
+                        <textarea formControlName="postText" class="form-control"
+                            placeholder="What would you like to share?"></textarea>
                         <ul class='list-inline post-actions'>
                             <h3>Please select the choices that best suit the post you are creating:</h3>
-                            <li class="pull-left" >
+                            <li class="pull-left">
                                 <mat-checkbox formControlName="academics">Academics</mat-checkbox><br>
                                 <mat-checkbox formControlName="news">News</mat-checkbox><br>
                                 <mat-checkbox formControlName="career">Career</mat-checkbox>
                             </li>
                             <li class="pull-right">
-                                <button class="btn btn-primary">Post</button>
+                                <button class="btn btn-primary" (click)="savePost()">Post</button>
+                            </li>
+                            <li>
+                                <br><small class="center" id="fullNameHelp" class="form-text text-muted">Please be aware
+                                    anything you post
+                                    is public and may be viewed by ALL audiences. Please be thoughtful in your
+                                    response. We thank you for sharing your inquiry with the world from the creators of
+                                    Inquiry.</small>
                             </li>
                         </ul>
                     </form>

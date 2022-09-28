@@ -1,7 +1,10 @@
+import { InquiryUser } from "./inquiry-user.account";
+
 export class PostClass {
     constructor(
-        public id: number | null,
-        public user_id: number | null,
+        public post_id: number | null,
+        public sender: InquiryUser | undefined,
+        public subjectLine: string,
         public academicsCheckBox: boolean,
         public newsCheckBox: boolean,
         public careerCheckBox : boolean,

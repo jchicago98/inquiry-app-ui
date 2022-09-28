@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
+    this.router.navigate(['/homepage']);
   }
 
   goToHomepage() {
