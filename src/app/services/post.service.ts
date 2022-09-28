@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class PostService {
 
   private post?: PostClass[];
-  private baseURL: string = environment.baseURL+"/user-post";
+  private baseURL: string = environment.baseURL+"/create-post";
 
   constructor(private httpClient: HttpClient) { }
 
