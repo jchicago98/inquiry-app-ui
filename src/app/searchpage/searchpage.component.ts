@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostClass } from '../models/post-class.model';
+import { PostService } from '../services/post.service';
 
 
 @Component({
@@ -9,9 +11,21 @@ import { Router } from '@angular/router';
 })
 export class SearchpageComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  postCreated ?: PostClass[];
+
+  constructor(
+    private router: Router,
+    private postService : PostService
+    ) { }
+
+    loadPosts(): void{
+      this.postService.getAllPosts().subscribe(
+        res => this.postCreated = res
+      );
+    }
 
   ngOnInit(): void {
+    this.loadPosts();
   }
 
 }

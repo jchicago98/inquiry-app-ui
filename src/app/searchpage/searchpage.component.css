@@ -2,7 +2,11 @@ body{
   margin-top:20px;
   background:#f8f8f8
 }
-.avatar--md .avatar__content img{
-  width:40px;
-  height:40px;
+
+h1 {
+  color: #009999;
+}
+
+p {
+  line-height: 1.8;
 }

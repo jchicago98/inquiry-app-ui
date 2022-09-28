@@ -29,6 +29,16 @@ export class PostService {
     );
   }
 
+  getAllPosts(): Observable<PostClass[]> {
+    return this.httpClient.get<PostClass[]>(this.baseURL + "/all").pipe(
+      map(res => {
+        this.post = res;
+        return this.post;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
