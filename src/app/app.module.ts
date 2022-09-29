@@ -58,7 +58,7 @@ import { MessagesComponent } from './messages/messages.component';
       {path:'homepage', component: HomepageComponent}
     ])
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
