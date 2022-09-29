@@ -15,12 +15,6 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { MaterialModule } from './material-modules/material.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { AcademicsComponent } from './academics/academics.component';
-import { NewsComponent } from './news/news.component';
-import { HobbiesComponent } from './hobbies/hobbies.component';
-import { CultureComponent } from './culture/culture.component';
-import { CareerComponent } from './career/career.component';
-import { PersonalLifeComponent } from './personal-life/personal-life.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AccountComponent } from './account/account.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -41,12 +35,6 @@ import { MessagesComponent } from './messages/messages.component';
     FooterComponent,
     SearchpageComponent,
     SignUpComponent,
-    AcademicsComponent,
-    NewsComponent,
-    HobbiesComponent,
-    CultureComponent,
-    CareerComponent,
-    PersonalLifeComponent,
     PrivacyPolicyComponent,
     AccountComponent,
     AccountSettingsComponent,
