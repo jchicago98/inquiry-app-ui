@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
-    this.router.navigate(['/homepage']);
+    this.router.navigate(['']);
   }
 
   goToHomepage() {
@@ -29,11 +29,11 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/messages']);
   }
 
-  goToAccount(){
+  goToAccount() {
     this.router.navigate(['/account']);
   }
 
-  goToPost(){
+  goToPost() {
     this.router.navigate(['/post']);
   }
 
