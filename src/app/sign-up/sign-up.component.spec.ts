@@ -72,6 +72,15 @@ describe('SignUpComponent', () => {
     expect (yearBornFunction).toBeFalsy();
   });
 
+  it('get email should return email value from registration form',()=>{
+    let emailFunction = fixture.componentInstance.email;
+    expect(emailFunction).toBeTruthy();
+  });
+
+  it('should test to see if prepareSave() hasnt been used',()=>{
+    let prepareSaveFunction = fixture.componentInstance.prepareSave();
+  });
+
 
 
 });

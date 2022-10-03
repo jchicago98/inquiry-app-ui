@@ -9,7 +9,7 @@
                         its becoming essentially beneficial to mankind." - Edward Jenner</h1>
                     <h2>Have ideas you want to share?</h2>
                     <div>
-                        <button class="btn btn-primary" (click)="postButtonClicked()">
+                        <button data-test-id="postButtonClickedTest" class="btn btn-primary" (click)="postButtonClicked()">
                             Create a post
                         </button>
                     </div>
@@ -26,19 +26,19 @@
                     <form [formGroup]="topics">
                         <ul class="list-inline" id='list_PostActions'>
                             <li><img class="img-fluid" src="../../assets/inquiry_logo.png"></li>
-                            <input type="text" class="form-control" formControlName="subjectLine" placeholder="Subject of topic">
+                            <input data-test-id="subjectLineTest" type="text" class="form-control" formControlName="subjectLine" placeholder="Subject of topic">
                         </ul>
-                        <textarea formControlName="postText" class="form-control"
+                        <textarea data-test-id="postTextTest" formControlName="postText" class="form-control"
                             placeholder="What would you like to share?"></textarea>
                         <ul class='list-inline post-actions'>
                             <h3>Please select the choices that best suit the post you are creating:</h3>
                             <li class="pull-left">
-                                <mat-checkbox formControlName="academics">Academics</mat-checkbox><br>
-                                <mat-checkbox formControlName="news">News</mat-checkbox><br>
-                                <mat-checkbox formControlName="career">Career</mat-checkbox>
+                                <mat-checkbox data-test-id="academicsCheckBoxTest" formControlName="academics">Academics</mat-checkbox><br>
+                                <mat-checkbox data-test-id="newsCheckBoxTest" formControlName="news">News</mat-checkbox><br>
+                                <mat-checkbox data-test-id="careerCheckBoxTest" formControlName="career">Career</mat-checkbox>
                             </li>
                             <li class="pull-right">
-                                <button class="btn btn-primary" (click)="savePost()">Post</button>
+                                <button data-test-id="savePostTestButton" class="btn btn-primary" (click)="savePost()">Post</button>
                             </li>
                             <li>
                                 <br><small class="center" id="fullNameHelp" class="form-text text-muted">Please be aware
