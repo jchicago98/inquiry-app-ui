@@ -72,6 +72,29 @@ describe('SignUpComponent', () => {
     expect (yearBornFunction).toBeFalsy();
   });
 
+  it('get email should return email value from registration form',()=>{
+    let emailFunction = fixture.componentInstance.email;
+    expect(emailFunction).toBeTruthy();
+  });
+
+  it('should test to see if prepareSave() hasnt been used',()=>{
+    let prepareSaveFunction = fixture.componentInstance.prepareSave();
+  });
+
+  it('should test if the user has been saved, saveUser()',()=>{
+    let saveUserFunction = fixture.componentInstance.saveUser();
+    expect(saveUserFunction).toBeFalsy();
+  });
+
+  it('should test the signUp() function',()=>{
+    let signUpFunction = fixture.componentInstance.signUp();
+    expect(signUpFunction).toBeFalsy();
+  });
+
+  it('should test the confirmSignUp() function',()=>{
+    let confirmSignUpFunction = fixture.componentInstance.confirmSignUp();
+    expect(confirmSignUpFunction).toBeFalsy();
+  });
 
 
 });

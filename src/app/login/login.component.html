@@ -2,7 +2,7 @@
 <div id="authenticator">
   <mat-card id="authenticator-content">
     <mat-card-header>
-      <mat-card-title>{{getStateText()}}</mat-card-title>
+      <mat-card-title data-test-id="getStateTextTest">{{getStateText()}}</mat-card-title>
     </mat-card-header>
     <div *ngIf="isLoginState();">
       <form (ngSubmit)="signIn()" [formGroup]="loginForm">
@@ -20,13 +20,13 @@
       </form>
     </div>
     <div *ngIf="isForgotPasswordState();">
-      <input matInput placeholder="Enter your email" class="form-control" formControlName="forgetPassword" name="forgotPassword"
+      <input matInput placeholder="Enter your email" name="forgotPassword"
       id="forgotPassword" required>
       <button class="btn btn-primary">Reset</button>
     </div>
     <mat-card-actions align="end">
-      <button mat-flat-button (click)="onLoginClick();">Login</button>
-      <button mat-flat-button (click)="onForgotPasswordClick();">Forgot Password</button>
+      <button mat-flat-button (click)="onLoginClick();" data-test-id="loginButtonTest">Login</button>
+      <button mat-flat-button (click)="onForgotPasswordClick();" data-test-id="forgotPasswordButtonTest">Forgot Password</button>
       <button mat-flat-button (click)="goToSignUp();">Create an Account</button>
     </mat-card-actions>
   </mat-card>
