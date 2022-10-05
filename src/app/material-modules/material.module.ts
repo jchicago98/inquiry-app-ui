@@ -17,7 +17,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [],
@@ -41,7 +42,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSliderModule,
     MatCardModule,
     MatSidenavModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
+  ],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha.siteKey,
+      } as RecaptchaSettings,
+    },
+  ],
 })
 export class MaterialModule { }

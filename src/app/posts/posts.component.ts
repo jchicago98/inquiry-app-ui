@@ -4,6 +4,7 @@ import { PostClass } from '../models/post-class.model';
 import { PostService } from '../services/post.service';
 import { InquiryUser } from '../models/inquiry-user.account';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-posts',
@@ -12,7 +13,11 @@ import { Router } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
 
-  postButtonStatus : boolean = false;
+  token: string | undefined;
+
+  postButtonStatus: boolean = false;
+  recaptchaStatus : boolean = false;
+  recaptchaStatusReturn : boolean = false;
   messageSender?: InquiryUser;
 
   topics = this.formBuilder.group({
@@ -23,19 +28,35 @@ export class PostsComponent implements OnInit {
     postText: new FormControl('', [Validators.required])
   });
 
-  get subjectLine(): string { return String(this.topics.get('subjectLine')?.value)}
-  get academics(): boolean { return Boolean(this.topics.get('academics')?.value)}
-  get news(): boolean { return Boolean(this.topics.get('news')?.value)}
-  get career(): boolean { return Boolean(this.topics.get('career')?.value)}
+  get subjectLine(): string { return String(this.topics.get('subjectLine')?.value) }
+  get academics(): boolean { return Boolean(this.topics.get('academics')?.value) }
+  get news(): boolean { return Boolean(this.topics.get('news')?.value) }
+  get career(): boolean { return Boolean(this.topics.get('career')?.value) }
   get postText(): string { return String(this.topics.get('postText')?.value) }
 
   constructor(
     private formBuilder: FormBuilder,
-    private postService : PostService,
-    private router : Router
-  ) { }
+    private postService: PostService,
+    private router: Router
+  ) { this.token = undefined; }
 
-  postButtonClicked(){
+  public send(form: NgForm): void {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
+    this.recaptchaStatusReturn = true;
+    this.recaptchaStatus = false;
+    console.debug(`Token [${this.token}] generated`);
+  }
+
+  recaptchaStatusClicked(){
+    this.recaptchaStatus = true;
+  }
+
+  postButtonClicked() {
     this.postButtonStatus = true;
   }
 
