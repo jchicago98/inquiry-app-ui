@@ -1,5 +1,14 @@
+re-captcha.is-invalid > div {
+    border: 1px solid #dc3545 !important;
+    border-radius: 0.2rem;
+  }
+
 section {
     background-color: #F0FFFF;
+}
+
+#verifyButton{
+    margin-top: 2%;
 }
 
 .center {
