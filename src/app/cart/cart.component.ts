@@ -1,42 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { PostClass } from '../models/post-class.model';
 import { PostService } from '../services/post.service';
 
-
 @Component({
-  selector: 'app-searchpage',
-  templateUrl: './searchpage.component.html',
-  styleUrls: ['./searchpage.component.css']
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
 })
-export class SearchpageComponent implements OnInit {
+export class CartComponent implements OnInit {
 
   postCreated?: PostClass[];
-  filteredPosts?: PostClass[];
+  isActiveCart?: PostClass[];
   singlePost?: PostClass;
-  searchText: string = "";
+  subTotalCost: number = 0;
   isCartActive: boolean = false;
+  noOfItems: number = 0;
+  salesTax : number = 0;
+  totalCost : number = 0;
 
-  constructor(
-    private router: Router,
-    private postService: PostService
-  ) { }
+  constructor(private postService: PostService) { }
 
-  loadPosts(): void {
+  loadCartActivePosts(): void {
     this.postService.getAllPosts().subscribe(
-      res => this.postCreated = res
+      res => {
+        this.postCreated = res;
+        this.isActiveCart = this.postCreated?.filter(
+          post => post.cartActive == true
+        );
+        this.isActiveCart?.filter(
+          post => {
+            this.subTotalCost = post.postPrice + this.subTotalCost;
+          }
+        );
+        this.salesTax = Number((this.subTotalCost * 0.0625).toFixed(2));
+        this.totalCost = Number((this.salesTax + this.subTotalCost).toFixed(2));
+        this.noOfItems = this.isActiveCart?.length;
+      }
+
     );
+
   }
 
-  ngOnInit(): void {
-    this.loadPosts();
-  }
-
-  search() {
-    this.filteredPosts = this.postCreated?.filter(post =>
-      post.subjectLine.includes(this.searchText) || post.postText.includes(this.searchText)
-    );
-  }
 
   prepareUpdate(): PostClass {
     return new PostClass(
@@ -52,8 +56,8 @@ export class SearchpageComponent implements OnInit {
     )
   }
 
-  addToCart(post_id : number | null){
-    this.isCartActive = true;
+  removeFromCart(post_id : number | null){
+    this.isCartActive = false;
     this.postService.getPostById(post_id).subscribe(
       res => {
         this.singlePost = res;
@@ -63,11 +67,15 @@ export class SearchpageComponent implements OnInit {
     //console.log("THIS IS THIS.PREPARE().CARTACTIVE: "+this.prepareUpdate().cartActive)
     let updatePost = this.prepareUpdate();
     this.postService.updatePost(updatePost).subscribe(
-      () => console.log("Post cart status updated to TRUE")
+      () => console.log("Post cart status updated to FALSE")
     );
-
+    window.location.reload();
 
     }
 
+
+  ngOnInit(): void {
+    this.loadCartActivePosts();
   }
 
+}

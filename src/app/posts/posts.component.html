@@ -61,13 +61,17 @@
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-primary" id="verifyButton"
-                                                (click)="send(form)">Verify</button>
+                                                    (click)="send(form)">Verify</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </li>
                             <li class="pull-right" *ngIf="!recaptchaStatus && recaptchaStatusReturn">
+                                <td width="150">
+                                    <input name="priceCharge" class="form-control" formControlName="postPrice"
+                                        placeholder="Charge Price $">
+                                </td>
                                 <button data-test-id="savePostTestButton" class="btn btn-primary"
                                     (click)="savePost()">Post</button>
                             </li>

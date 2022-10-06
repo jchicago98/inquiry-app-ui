@@ -1,0 +1,15 @@
+.center {
+    padding: 50px 300px;
+    text-align: center;
+}
+
+h3,
+h2 {
+    color: #009999;
+}
+
+#removeButton {
+    padding: 0;
+    border: none;
+    background: none;
+}

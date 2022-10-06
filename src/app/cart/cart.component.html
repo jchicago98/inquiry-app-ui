@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="pull-right">(<strong>{{noOfItems}}</strong>) items</span>
+                        <h5>Items in your cart</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table shoping-cart-table">
+                                <tbody>
+                                    <tr *ngFor="let activeCartPosts of isActiveCart">
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc">
+                                            <h3>
+                                                    {{activeCartPosts.subjectLine}}
+                                            </h3>
+                                            <p class="small">
+                                                {{activeCartPosts.postText}}
+                                            </p>
+                                            <dl class="small m-b-none">
+                                                <dt>Tags</dt>
+                                                <dd *ngIf="this.activeCartPosts.academicsCheckBox && this.activeCartPosts.newsCheckBox && this.activeCartPosts.careerCheckBox">Academics, News, Career</dd>
+                                                <dd *ngIf="this.activeCartPosts.academicsCheckBox && this.activeCartPosts.newsCheckBox && !this.activeCartPosts.careerCheckBox">Academics, News</dd>
+                                                <dd *ngIf="this.activeCartPosts.academicsCheckBox && !this.activeCartPosts.newsCheckBox && !this.activeCartPosts.careerCheckBox">Academics</dd>
+                                                <dd *ngIf="!this.activeCartPosts.academicsCheckBox && this.activeCartPosts.newsCheckBox && this.activeCartPosts.careerCheckBox">News, Career</dd>
+                                                <dd *ngIf="!this.activeCartPosts.academicsCheckBox && this.activeCartPosts.newsCheckBox && !this.activeCartPosts.careerCheckBox">News</dd>
+                                                <dd *ngIf="this.activeCartPosts.academicsCheckBox && !this.activeCartPosts.newsCheckBox && this.activeCartPosts.careerCheckBox">Academics, Career</dd>
+                                                <dd *ngIf="!this.activeCartPosts.academicsCheckBox && !this.activeCartPosts.newsCheckBox && this.activeCartPosts.careerCheckBox">Career</dd>
+                                                <dd *ngIf="!this.activeCartPosts.academicsCheckBox && !this.activeCartPosts.newsCheckBox && !this.activeCartPosts.careerCheckBox">None</dd>
+                                            </dl>
+                                            <div class="m-t-sm">
+                                                <button (click)="removeFromCart(activeCartPosts.post_id)" id="removeButton" class="text-muted"><i class="fa fa-trash"></i> Remove
+                                                    item</button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                ${{activeCartPosts.postPrice}}
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Cart Summary</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <span>
+                            Total
+                        </span>
+                        <h2 class="font-bold">
+                            ${{totalCost}}
+                            <br><h4>Subtotal
+                            <br><small>${{subTotalCost}}</small>
+                            <br><small>Sales Tax</small>
+                            <br><small>${{salesTax}}</small>
+                        </h4>
+                        </h2>
+
+                        <hr>
+                        <span class="text-muted small">
+                            *For United States applicable sales tax will be applied
+                        </span>
+                        <div class="m-t-sm">
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i>
+                                    Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Support</h5>
+                    </div>
+                    <div class="ibox-content text-center">
+                        <h3><i class="fa fa-phone"></i> +1 202 555 0117</h3>
+                        <span class="small">
+                            *PLEASE NOTE THIS IS A FAKE NUMBER AND WILL NOT BE CALLABLE. NUMBER DISPLAYED IS FOR DEMOSTRATION PURPOSES ONLY.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
