@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { InquiryUser } from '../models/inquiry-user.account';
+import { Router } from '@angular/router';
 import { PostClass } from '../models/post-class.model';
 import { PostService } from '../services/post.service';
 
@@ -20,8 +19,7 @@ export class SearchpageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private postService: PostService,
-    private activatedRoute: ActivatedRoute
+    private postService: PostService
   ) { }
 
   loadPosts(): void {

@@ -63,7 +63,7 @@
             <tbody>
               <tr *ngFor="let individualPost of postCreated">
                 <td class="align-middle">
-                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to {{individualPost.post_id}} <i class="fa fa-shopping-cart"></i></button>
+                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
                   <h1>
                     {{individualPost.subjectLine}}
                     <!--{{individualPost.post_id}}-->
