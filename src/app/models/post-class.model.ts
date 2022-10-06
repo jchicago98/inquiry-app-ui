@@ -8,6 +8,8 @@ export class PostClass {
         public academicsCheckBox: boolean,
         public newsCheckBox: boolean,
         public careerCheckBox : boolean,
-        public postText : string
+        public postText : string,
+        public postPrice : number,
+        public cartActive : boolean
     ) { }
 }

@@ -25,7 +25,8 @@ export class PostsComponent implements OnInit {
     academics: false,
     news: false,
     career: false,
-    postText: new FormControl('', [Validators.required])
+    postText: new FormControl('', [Validators.required]),
+    postPrice: new FormControl('', [Validators.required])
   });
 
   get subjectLine(): string { return String(this.topics.get('subjectLine')?.value) }
@@ -33,6 +34,7 @@ export class PostsComponent implements OnInit {
   get news(): boolean { return Boolean(this.topics.get('news')?.value) }
   get career(): boolean { return Boolean(this.topics.get('career')?.value) }
   get postText(): string { return String(this.topics.get('postText')?.value) }
+  get postPrice(): number { return Number(this.topics.get('postPrice')?.value)}
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,7 +73,9 @@ export class PostsComponent implements OnInit {
       this.academics,
       this.news,
       this.career,
-      this.postText
+      this.postText,
+      this.postPrice,
+      false
     )
   }
 

@@ -39,6 +39,26 @@ export class PostService {
     );
   }
 
+  getPostById(id: number | null): Observable<PostClass | undefined> {
+    if(!this.post){
+      return this.getAllPosts().pipe(
+        map(() => this.post?.find(userPost=> userPost.post_id == id)),
+        catchError(this.handleError)
+      );
+    }else{
+      return of(this.post.find(userPost=>userPost.post_id == id));
+    }
+  }
+
+  updatePost(post: PostClass): Observable<PostClass> {
+    return this.httpClient.put<PostClass>(this.baseURL+"/update",
+      post, this.postHeaders
+    ).pipe(
+      map( res => res),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

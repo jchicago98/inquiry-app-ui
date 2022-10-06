@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { InquiryUser } from '../models/inquiry-user.account';
 import { PostClass } from '../models/post-class.model';
 import { PostService } from '../services/post.service';
 
@@ -11,29 +12,64 @@ import { PostService } from '../services/post.service';
 })
 export class SearchpageComponent implements OnInit {
 
-  postCreated ?: PostClass[];
+  postCreated?: PostClass[];
   filteredPosts?: PostClass[];
+  singlePost?: PostClass;
   searchText: string = "";
+  isCartActive: boolean = false;
 
   constructor(
     private router: Router,
-    private postService : PostService
-    ) { }
+    private postService: PostService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-    loadPosts(): void{
-      this.postService.getAllPosts().subscribe(
-        res => this.postCreated = res
-      );
-    }
+  loadPosts(): void {
+    this.postService.getAllPosts().subscribe(
+      res => this.postCreated = res
+    );
+  }
 
   ngOnInit(): void {
     this.loadPosts();
   }
 
-  search(){
+  search() {
     this.filteredPosts = this.postCreated?.filter(post =>
       post.subjectLine.includes(this.searchText) || post.postText.includes(this.searchText)
     );
   }
 
-}
+  prepareUpdate(): PostClass {
+    return new PostClass(
+      Number(this.singlePost?.post_id),
+      this.singlePost?.sender,
+      String(this.singlePost?.subjectLine),
+      Boolean(this.singlePost?.academicsCheckBox),
+      Boolean(this.singlePost?.newsCheckBox),
+      Boolean(this.singlePost?.careerCheckBox),
+      String(this.singlePost?.postText),
+      Number(this.singlePost?.postPrice),
+      this.isCartActive
+    )
+  }
+
+  addToCart(post_id : number | null){
+    this.isCartActive = true;
+    this.postService.getPostById(post_id).subscribe(
+      res => {
+        this.singlePost = res;
+        console.log(res);
+      }
+    );
+    //console.log("THIS IS THIS.PREPARE().CARTACTIVE: "+this.prepareUpdate().cartActive)
+    let updatePost = this.prepareUpdate();
+    this.postService.updatePost(updatePost).subscribe(
+      () => console.log("Post cart status updated to TRUE")
+    );
+
+
+    }
+
+  }
+

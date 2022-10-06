@@ -6,7 +6,8 @@
       <div class="mb-4">
         <div class="small mb-3">Search</div>
         <div class="input-group">
-          <input placeholder="Search any topics here!" type="text" class="form-control" [(ngModel)]="searchText" (ngModelChange)="search()">
+          <input placeholder="Search any topics here!" type="text" class="form-control" [(ngModel)]="searchText"
+            (ngModelChange)="search()">
           <div class="input-group-append">
             <button class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
@@ -18,20 +19,35 @@
       <div class="d-flex flex-column flex-md-row mb-3 mb-md-0">
       </div>
       <div class="mb-3 Card_custom-card--border_5wJKy card">
-        <div *ngIf= "this.filteredPosts" class="table-responsive-xl">
+        <div *ngIf="this.filteredPosts" class="table-responsive-xl">
           <table class="mb-0 table table-hover">
             <tbody>
               <tr *ngFor="let individualPost of filteredPosts">
                 <td class="align-middle">
                   <h1>{{individualPost.subjectLine}}</h1>
+                  <a routerLink="/homepage">Add to cart</a>
                   <p>{{individualPost.postText}}</p>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Academics, News, Career</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: Academics, News</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: Academics</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: News, Career</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: News</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Academics, Career</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Career</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Academics, News, Career</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    Academics, News</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    Academics</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    News, Career</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    News</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Academics, Career</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Career</small>
                 <td class="align-middle">
                   <div class="mb-2 progress" style="height: 5px;">
                     <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
@@ -42,20 +58,38 @@
             </tbody>
           </table>
         </div>
-        <div *ngIf= "!this.filteredPosts" class="table-responsive-xl">
+        <div *ngIf="!this.filteredPosts" class="table-responsive-xl">
           <table class="mb-0 table table-hover">
             <tbody>
               <tr *ngFor="let individualPost of postCreated">
                 <td class="align-middle">
-                  <h1>{{individualPost.subjectLine}}</h1>
+                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to {{individualPost.post_id}} <i class="fa fa-shopping-cart"></i></button>
+                  <h1>
+                    {{individualPost.subjectLine}}
+                    <!--{{individualPost.post_id}}-->
+                  </h1>
                   <p>{{individualPost.postText}}</p>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Academics, News, Career</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: Academics, News</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: Academics</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: News, Career</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags: News</small>
-                  <small *ngIf = "this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Academics, Career</small>
-                  <small *ngIf = "!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags: Career</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Academics, News, Career</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    Academics, News</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    Academics</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    News, Career</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && !this.individualPost.careerCheckBox">Tags:
+                    News</small>
+                  <small
+                    *ngIf="this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Academics, Career</small>
+                  <small
+                    *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
+                    Career</small>
                 <td class="align-middle">
                   <div class="mb-2 progress" style="height: 5px;">
                     <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"

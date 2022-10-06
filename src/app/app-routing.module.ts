@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { AccountComponent } from './account/account.component';
 import { BillingComponent } from './billing/billing.component';
+import { CartComponent } from './cart/cart.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -25,7 +26,8 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path: 'billing', component: BillingComponent },
   { path: 'post', component: PostsComponent },
-  { path: 'messages', component: MessagesComponent }
+  { path: 'messages', component: MessagesComponent },
+  { path: 'cart', component: CartComponent }
 ];
 
 @NgModule({

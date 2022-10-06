@@ -24,6 +24,7 @@ import { BillingComponent } from './billing/billing.component';
 import { PostsComponent } from './posts/posts.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MessagesComponent } from './messages/messages.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { MessagesComponent } from './messages/messages.component';
     BillingComponent,
     PostsComponent,
     SidenavComponent,
-    MessagesComponent
+    MessagesComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
