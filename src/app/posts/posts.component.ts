@@ -75,6 +75,7 @@ export class PostsComponent implements OnInit {
       this.career,
       this.postText,
       this.postPrice,
+      false,
       false
     )
   }

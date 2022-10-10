@@ -18,12 +18,17 @@ export class CartComponent implements OnInit {
   salesTax : number = 0;
   totalCost : number = 0;
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private postService: PostService
+    ) { }
 
   loadCartActivePosts(): void {
     this.postService.getAllPosts().subscribe(
       res => {
         this.postCreated = res;
+        this.postCreated = this.postCreated?.filter(
+          reportStatus => reportStatus.reportPostStatus == false
+        );
         this.isActiveCart = this.postCreated?.filter(
           post => post.cartActive == true
         );
@@ -52,7 +57,8 @@ export class CartComponent implements OnInit {
       Boolean(this.singlePost?.careerCheckBox),
       String(this.singlePost?.postText),
       Number(this.singlePost?.postPrice),
-      this.isCartActive
+      this.isCartActive,
+      Boolean(this.singlePost?.reportPostStatus)
     )
   }
 
