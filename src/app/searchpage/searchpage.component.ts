@@ -18,6 +18,7 @@ export class SearchpageComponent implements OnInit {
   searchText: string = "";
   isCartActive: boolean = false;
   reportPostStatus: boolean = false;
+  reportPostIdTracker : number | null = 0;
 
   constructor(
     private router: Router,
@@ -79,6 +80,7 @@ export class SearchpageComponent implements OnInit {
 
   reportPost(post_id: number | null) {
     this.reportPostStatus = true;
+    this.reportPostIdTracker = post_id;
   }
 
   reportPostFinal(post_id: number | null) {
@@ -88,7 +90,6 @@ export class SearchpageComponent implements OnInit {
         console.log(res);
       }
     );
-    //console.log("THIS IS THIS.PREPARE().CARTACTIVE: "+this.prepareUpdate().cartActive)
     let updatePost = this.prepareUpdate();
     this.postService.updatePost(updatePost).subscribe(
       () => console.log("Report Post status updated to TRUE")
