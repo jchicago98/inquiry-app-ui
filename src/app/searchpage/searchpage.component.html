@@ -24,8 +24,8 @@
             <tbody>
               <tr *ngFor="let individualPost of filteredPosts">
                 <td class="align-middle">
+                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
                   <h1>{{individualPost.subjectLine}}</h1>
-                  <a routerLink="/homepage">Add to cart</a>
                   <p>{{individualPost.postText}}</p>
                   <small
                     *ngIf="this.individualPost.academicsCheckBox && this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
@@ -48,12 +48,6 @@
                   <small
                     *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
                     Career</small>
-                <td class="align-middle">
-                  <div class="mb-2 progress" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                      aria-valuemax="100" style="width: 25%;"></div>
-                  </div>
-                </td>
               </tr>
             </tbody>
           </table>
@@ -61,7 +55,7 @@
         <div *ngIf="!this.filteredPosts" class="table-responsive-xl">
           <table class="mb-0 table table-hover">
             <tbody>
-              <tr *ngFor="let individualPost of postCreated">
+              <tr *ngFor="let individualPost of reportedPostsCreated">
                 <td class="align-middle">
                   <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
                   <h1>
@@ -90,12 +84,11 @@
                   <small
                     *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
                     Career</small>
-                <td class="align-middle">
-                  <div class="mb-2 progress" style="height: 5px;">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                      aria-valuemax="100" style="width: 25%;"></div>
-                  </div>
-                </td>
+                    <a *ngIf="!this.reportPostStatus" (click)="reportPost(individualPost.post_id)" class="pull-right">Report Post</a>
+                    <section *ngIf="this.reportPostStatus" class="pull-right">
+                      <button (click)="reportPostFinal(individualPost.post_id)">Report for Inappropriate Content</button>
+                      <button (click)="reportPostFinal(individualPost.post_id)">Report for Spam</button>
+                    </section>
               </tr>
             </tbody>
           </table>

@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "aws-amplify": "^4.3.33",
+    "badwords-filter": "^1.3.0",
+    "jconet-content-moderation": "^1.0.2",
     "ng-recaptcha": "^10.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -10,6 +10,7 @@ export class PostClass {
         public careerCheckBox : boolean,
         public postText : string,
         public postPrice : number,
-        public cartActive : boolean
+        public cartActive : boolean,
+        public reportPostStatus : boolean
     ) { }
 }

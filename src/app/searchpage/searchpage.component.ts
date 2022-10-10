@@ -13,9 +13,11 @@ export class SearchpageComponent implements OnInit {
 
   postCreated?: PostClass[];
   filteredPosts?: PostClass[];
+  reportedPostsCreated?: PostClass[];
   singlePost?: PostClass;
   searchText: string = "";
   isCartActive: boolean = false;
+  reportPostStatus: boolean = false;
 
   constructor(
     private router: Router,
@@ -24,7 +26,12 @@ export class SearchpageComponent implements OnInit {
 
   loadPosts(): void {
     this.postService.getAllPosts().subscribe(
-      res => this.postCreated = res
+      res => {
+        this.postCreated = res;
+        this.reportedPostsCreated = this.postCreated?.filter(
+          reportedStatus => reportedStatus.reportPostStatus == false
+        );
+      }
     );
   }
 
@@ -48,11 +55,12 @@ export class SearchpageComponent implements OnInit {
       Boolean(this.singlePost?.careerCheckBox),
       String(this.singlePost?.postText),
       Number(this.singlePost?.postPrice),
-      this.isCartActive
+      this.isCartActive,
+      this.reportPostStatus
     )
   }
 
-  addToCart(post_id : number | null){
+  addToCart(post_id: number | null) {
     this.isCartActive = true;
     this.postService.getPostById(post_id).subscribe(
       res => {
@@ -67,7 +75,27 @@ export class SearchpageComponent implements OnInit {
     );
 
 
-    }
-
   }
+
+  reportPost(post_id: number | null) {
+    this.reportPostStatus = true;
+  }
+
+  reportPostFinal(post_id: number | null) {
+    this.postService.getPostById(post_id).subscribe(
+      res => {
+        this.singlePost = res;
+        console.log(res);
+      }
+    );
+    //console.log("THIS IS THIS.PREPARE().CARTACTIVE: "+this.prepareUpdate().cartActive)
+    let updatePost = this.prepareUpdate();
+    this.postService.updatePost(updatePost).subscribe(
+      () => console.log("Report Post status updated to TRUE")
+    );
+    this.reportPostStatus = false;
+    window.location.reload();
+  }
+
+}
 
