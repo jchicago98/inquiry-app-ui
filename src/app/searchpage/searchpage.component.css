@@ -1,6 +1,22 @@
-body{
-  margin-top:20px;
-  background:#f8f8f8
+body {
+  margin-top: 20px;
+  background: #f8f8f8
+}
+
+.reportButton {
+  background-color: #009999;
+  padding-top: 3px;
+  padding-right: 12.5px;
+  padding-bottom: 3.5px;
+  padding-left: 12.5px;
+  font-size: 0.8rem;
+  color: #f8f8f8;
+  border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-left: 5px;
 }
 
 .pull-right {

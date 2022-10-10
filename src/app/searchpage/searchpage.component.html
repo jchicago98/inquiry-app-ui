@@ -24,7 +24,8 @@
             <tbody>
               <tr *ngFor="let individualPost of filteredPosts">
                 <td class="align-middle">
-                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
+                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart"
+                    (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
                   <h1>{{individualPost.subjectLine}}</h1>
                   <p>{{individualPost.postText}}</p>
                   <small
@@ -48,6 +49,12 @@
                   <small
                     *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
                     Career</small>
+                  <a *ngIf="!this.reportPostStatus" (click)="reportPost(individualPost.post_id)"
+                    class="pull-right">Report Post</a>
+                  <section *ngIf="this.reportPostStatus" class="pull-right">
+                    <button (click)="reportPostFinal(individualPost.post_id)">Report for Inappropriate Content</button>
+                    <button (click)="reportPostFinal(individualPost.post_id)">Report for Spam</button>
+                  </section>
               </tr>
             </tbody>
           </table>
@@ -57,7 +64,8 @@
             <tbody>
               <tr *ngFor="let individualPost of reportedPostsCreated">
                 <td class="align-middle">
-                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart" (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
+                  <button name="cartButtonOverride" class="btn btn-primary" id="addToCart"
+                    (click)="addToCart(individualPost.post_id)">Add to <i class="fa fa-shopping-cart"></i></button>
                   <h1>
                     {{individualPost.subjectLine}}
                     <!--{{individualPost.post_id}}-->
@@ -84,11 +92,12 @@
                   <small
                     *ngIf="!this.individualPost.academicsCheckBox && !this.individualPost.newsCheckBox && this.individualPost.careerCheckBox">Tags:
                     Career</small>
-                    <a *ngIf="!this.reportPostStatus" (click)="reportPost(individualPost.post_id)" class="pull-right">Report Post</a>
-                    <section *ngIf="this.reportPostStatus" class="pull-right">
-                      <button (click)="reportPostFinal(individualPost.post_id)">Report for Inappropriate Content</button>
-                      <button (click)="reportPostFinal(individualPost.post_id)">Report for Spam</button>
-                    </section>
+                  <a *ngIf="!this.reportPostStatus" (click)="reportPost(individualPost.post_id)"
+                    class="pull-right">Report Post</a>
+                  <section *ngIf="this.reportPostStatus && individualPost.post_id == this.reportPostIdTracker" class="pull-right">
+                    <button class="reportButton" (click)="reportPostFinal(individualPost.post_id)">Report for Inappropriate Content</button>
+                    <button class="reportButton" (click)="reportPostFinal(individualPost.post_id)">Report for Spam</button>
+                  </section>
               </tr>
             </tbody>
           </table>
